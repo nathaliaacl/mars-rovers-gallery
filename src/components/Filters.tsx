@@ -14,7 +14,7 @@ interface Props {
   clearFilters: () => void;
 }
 
-const cameras = ["FHAZ", "RHAZ", "MAST", "CHEMCAM", "MAHLI", "MARDI", "NAVCAM", "PANCAM", "MINITES"];
+const cameras = ["CHEMCAM_RMI", "NAVCAM_LEFT", "NAVCAM_RIGHT", "NAV_RIGHT_B", "FRONT_HAZCAM_RIGHT_A", "SUPERCAM_RMI"];
 const rovers = ["curiosity", "perseverance"];
 
 export const Filters = ({ rover, camera, earth_date, setFilters, clearFilters }: Props) => {

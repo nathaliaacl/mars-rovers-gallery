@@ -27,7 +27,7 @@ export default function HomePage() {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "60vh",}}>
-          <CircularProgress />
+          <CircularProgress color="secondary"/>
         </Box>
       ) : error ? (
         <Typography color="error">{error}</Typography>
