@@ -23,7 +23,10 @@ export default function HomePage() {
       <Filters {...filters} setFilters={setFilters} clearFilters={clearFilters} />
 
       {loading ? (
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
+        <Box sx={{ display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "60vh",}}>
           <CircularProgress />
         </Box>
       ) : error ? (

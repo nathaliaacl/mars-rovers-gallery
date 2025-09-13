@@ -4,7 +4,7 @@ import { Photo } from "@/types/Photo";
 import { fetchLatestPhotos } from "@/utils/nasaApi";
 
 const API_KEY = process.env.NEXT_PUBLIC_NASA_API_KEY as string;
-const rovers = ["curiosity", "perseverance", "opportunity", "spirit"];
+const rovers = ["curiosity", "perseverance"];
 const DEFAULT_SOL = 1000;
 
 export const usePhotos = () => {

@@ -15,7 +15,7 @@ interface Props {
 }
 
 const cameras = ["FHAZ", "RHAZ", "MAST", "CHEMCAM", "MAHLI", "MARDI", "NAVCAM", "PANCAM", "MINITES"];
-const rovers = ["curiosity", "perseverance", "opportunity", "spirit"];
+const rovers = ["curiosity", "perseverance"];
 
 export const Filters = ({ rover, camera, earth_date, setFilters, clearFilters }: Props) => {
   const [localRover, setLocalRover] = React.useState(rover || "");
@@ -41,12 +41,14 @@ export const Filters = ({ rover, camera, earth_date, setFilters, clearFilters }:
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 6, justifyContent: "center", alignItems: "center",}}>
+      <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 6, justifyContent: "center", alignItems: "center" }}>
+
         <FormControl sx={{ minWidth: 150 }}>
           <InputLabel>Rover</InputLabel>
           <Select
             value={localRover}
             onChange={(e) => setLocalRover(e.target.value)}
+            sx={{ borderRadius: 3 }}
           >
             {rovers.map(r => <MenuItem key={r} value={r}>{r}</MenuItem>)}
           </Select>
@@ -57,6 +59,7 @@ export const Filters = ({ rover, camera, earth_date, setFilters, clearFilters }:
           <Select
             value={localCamera}
             onChange={(e) => setLocalCamera(e.target.value)}
+             sx={{ borderRadius: 3 }}
           >
             {cameras.map(c => <MenuItem key={c} value={c.toLowerCase()}>{c}</MenuItem>)}
           </Select>
@@ -68,12 +71,18 @@ export const Filters = ({ rover, camera, earth_date, setFilters, clearFilters }:
           onChange={(newValue) => setLocalDate(newValue)}
           slotProps={{
             textField: {
-              sx: { input: { color: "#fff" }, label: { color: "#fff" } }
+              sx: {
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 5,
+                },
+                input: { color: "#fff" },
+                label: { color: "#fff" }
+              }
             }
           }}
         />
 
-        <Button variant="contained" onClick={applyFilters}>
+        <Button variant="contained" color="secondary" onClick={applyFilters}>
           Apply
         </Button>
         <Button variant="outlined" color="secondary" onClick={handleClearFilters}>
