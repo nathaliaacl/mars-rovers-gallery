@@ -96,22 +96,3 @@ NEXT_PUBLIC_NASA_API_KEY=YOUR_KEY
 npm run dev
 
 5. Open the application at [http://localhost:3000](http://localhost:3000)
-
----
-
-## 🔗 NASA API Endpoints Examples
-
-- Latest photos from Curiosity:  
-```
-https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=YOUR_KEY
-```
-
-- Photos by sol (Martian day) and camera:  
-```
-https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=YOUR_KEY
-```
-
-- Photos by Earth date and camera:  
-```
-https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?earth_date=2025-01-01&camera=NAVCAM_LEFT&api_key=YOUR_KEY
-```
