@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mars Rover Gallery
 
-## Getting Started
+A web application to **view, search, and filter Mars photos** captured by NASA Rovers. The project uses Next.js, TypeScript, and MUI, with a modern Pinterest-style design.
 
-First, run the development server:
+---
 
+## Technologies Used
+
+- **Next.js 15** – React framework for SSR and static site generation
+- **TypeScript** – static typing for safer code
+- **MUI (Material UI)** – component library with modern design
+- **NASA Mars Rover Photos API** – source of images and data
+- **React Hooks** – state and effect management
+- **Masonry Layout** – Pinterest-style layout for photo cards
+- **Poppins** – font used in the UI
+
+---
+
+## Design
+
+- Black background throughout the application
+- **Poppins** font
+- Photo cards displayed in 4 columns
+- Each card shows:
+  - **Photo date (Earth date)**
+  - **Camera name**
+  - **Rover name**
+- Responsive layout with Masonry to organize photos
+- Home page shows the **latest photos** (`latest_photos`) from **Curiosity** and **Perseverance**
+
+---
+
+## Features
+
+### Available Filters:
+
+1. **Rover Selection**  
+   - Search photos by a specific rover (Curiosity or Perseverance)  
+   - Example endpoint:  
+     ```
+     https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=YOUR_KEY
+     ```
+
+2. **Camera Selection**  
+   - Available cameras:  
+     ```
+     CHEMCAM_RMI, NAVCAM_LEFT, NAVCAM_RIGHT, NAV_RIGHT_B, FRONT_HAZCAM_RIGHT_A, SUPERCAM_RMI;
+     ```  
+   - Photos appear automatically when a camera is selected  
+   - Example endpoint:  
+     ```
+     https://api.nasa.gov/mars-photos/api/v1/rovers/{rover_name}/photos?camera={camera_abbr}&api_key=YOUR_KEY
+     ```
+
+3. **Earth Date Selection**  
+   - Filter photos taken on a specific Earth date  
+   - Example endpoint:  
+     ```
+     https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2025-01-01&api_key=YOUR_KEY
+     ```
+
+4. **Filter Combinations**  
+   - Rover + Camera + Date
+   - Rover + Camera  
+   - Rover + Date  
+   - Camera only (filter applied locally to latest photos of each rover)
+
+
+## How to Run
+
+### Prerequisites
+
+- Node.js >= 20
+- npm
+- NASA API key (https://api.nasa.gov/)
+
+### Steps
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/nathaliaacl/mars-rover-gallery.git
+cd mars-rover-gallery
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create a `.env.local` file and add your NASA API key:
+```
+NEXT_PUBLIC_NASA_API_KEY=YOUR_KEY
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
 
-## Learn More
+5. Open the application at [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔗 NASA API Endpoints Examples
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Latest photos from Curiosity:  
+```
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=YOUR_KEY
+```
 
-## Deploy on Vercel
+- Photos by sol (Martian day) and camera:  
+```
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=YOUR_KEY
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Photos by Earth date and camera:  
+```
+https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?earth_date=2025-01-01&camera=NAVCAM_LEFT&api_key=YOUR_KEY
+```
