@@ -59,13 +59,6 @@ A web application to **view, search, and filter Mars photos** captured by NASA R
      https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2025-01-01&api_key=YOUR_KEY
      ```
 
-4. **Filter Combinations**  
-   - Rover + Camera + Date
-   - Rover + Camera  
-   - Rover + Date  
-   - Camera only (filter applied locally to latest photos of each rover)
-
-
 ## How to Run
 
 ### Prerequisites
